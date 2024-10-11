@@ -34,9 +34,9 @@ class FileManager {
         this.rl.question('Enter command: \n', (input) => this.#processCommand(input.trim()));
     }
 
-    #processCommand(input) {
+    async #processCommand(input) {
         try {
-            this.commandProcessor.process(input);
+            await this.commandProcessor.process(input);
         } catch (error) {
             printError(`Operation failed: ${error.message}`);
         }
