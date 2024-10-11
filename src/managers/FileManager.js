@@ -18,6 +18,18 @@ class FileManager {
         this.commandProcessor = new CommandProcessor(this);
     }
 
+    start() {
+        printInfo(`Welcome to the File Manager, ${this.username}!`);
+        this.#printCurrentDir();
+        this.#promptUser();
+    }
+
+    exit() {
+        this.rl.close();
+        printInfo(`Thank you for using File Manager, ${this.username}, goodbye!`);
+        process.exit(0);
+    }
+
     #promptUser() {
         this.rl.question('Enter command: \n', (input) => this.#processCommand(input.trim()));
     }
@@ -35,18 +47,6 @@ class FileManager {
 
     #printCurrentDir() {
         printInfo(`You are currently in ${this.currentDir}`);
-    }
-
-    start() {
-        printInfo(`Welcome to the File Manager, ${this.username}!`);
-        this.#printCurrentDir();
-        this.#promptUser();
-    }
-
-    exit() {
-        this.rl.close();
-        printInfo(`Thank you for using File Manager, ${this.username}, goodbye!`);
-        process.exit(0);
     }
 }
 

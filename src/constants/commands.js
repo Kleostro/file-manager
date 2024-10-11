@@ -1,5 +1,6 @@
 const COMMANDS = {
-    EXIT: '.exit'
+    EXIT: '.exit',
+    UP: 'up',
 }
 
 export default COMMANDS;
