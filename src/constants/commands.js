@@ -4,6 +4,7 @@ const COMMANDS = {
     CD: 'cd',
     LS: 'ls',
     CAT: 'cat',
+    ADD: 'add',
 }
 
 export default COMMANDS;

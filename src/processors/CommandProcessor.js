@@ -4,6 +4,7 @@ import CdCommand from '#commands/fileSystem/Cd';
 import UpCommand from '#commands/fileSystem/Up';
 import LsCommand from '#commands/fileSystem/Ls';
 import CatCommand from '#commands/file/Cat';
+import AddCommand from '#commands/file/Add';
 import { printError } from '#utils/printMessage';
 
 class CommandProcessor {
@@ -14,6 +15,7 @@ class CommandProcessor {
             [COMMANDS.CD]: new CdCommand(fileManager),
             [COMMANDS.LS]: new LsCommand(fileManager),
             [COMMANDS.CAT]: new CatCommand(fileManager),
+            [COMMANDS.ADD]: new AddCommand(fileManager),
         };
     }
 

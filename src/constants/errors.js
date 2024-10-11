@@ -6,6 +6,7 @@ const ERRORS = {
     DIRECTORY_DOES_NOT_EXIST: 'Directory does not exist',
     ALREADY_IN_DIRECTORY: 'Already in this directory',
     CAT_COMMAND_REQUIRES_ARGUMENT: 'cat command requires one argument',
+    ADD_COMMAND_REQUIRES_ARGUMENT: 'add command requires one argument',
 }
 
 export default ERRORS;
