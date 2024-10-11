@@ -5,6 +5,7 @@ const COMMANDS = {
     LS: 'ls',
     CAT: 'cat',
     ADD: 'add',
+    RN: 'rn',
 }
 
 export default COMMANDS;
