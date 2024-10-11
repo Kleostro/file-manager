@@ -3,6 +3,8 @@ import ERRORS from '#constants/errors';
 import CdCommand from '#commands/fileSystem/Cd';
 import UpCommand from '#commands/fileSystem/Up';
 import LsCommand from '#commands/fileSystem/Ls';
+import CatCommand from '#commands/file/Cat';
+import { printError } from '#utils/printMessage';
 
 class CommandProcessor {
     constructor(fileManager) {
@@ -11,6 +13,7 @@ class CommandProcessor {
             [COMMANDS.UP]: new UpCommand(fileManager),
             [COMMANDS.CD]: new CdCommand(fileManager),
             [COMMANDS.LS]: new LsCommand(fileManager),
+            [COMMANDS.CAT]: new CatCommand(fileManager),
         };
     }
 
@@ -27,7 +30,11 @@ class CommandProcessor {
             throw new Error(ERRORS.INVALID_COMMAND);
         }
 
-        await commandInstance.execute(args);
+        try {
+            await commandInstance.execute(args);
+        } catch (error) {
+            printError(`Operation failed: ${error.message}`);
+        }
     }
 }
 

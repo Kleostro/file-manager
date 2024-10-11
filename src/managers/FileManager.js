@@ -38,7 +38,7 @@ class FileManager {
         try {
             await this.commandProcessor.process(input);
         } catch (error) {
-            printError(`Operation failed: ${error.message}`);
+            printError(error.message);
         }
 
         this.#printCurrentDir();
