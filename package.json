@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "imports": {
-    "#*": "./src/*.js"
+    "#*": "./src/*.js",
+    "#commands/*": "./src/processors/commands/*.js"
   },
   "scripts": {
     "start": "node index.js"
