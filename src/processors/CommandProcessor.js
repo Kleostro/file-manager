@@ -2,7 +2,7 @@ import COMMANDS from '#constants/commands';
 import ERRORS from '#constants/errors';
 import path from 'path';
 import fs from 'fs';
-import { printSuccess } from '#utils/printMessage';
+import { printSuccess, printInfo, printTable } from '#utils/printMessage';
 
 class CommandProcessor {
     constructor(fileManager) {
@@ -19,6 +19,9 @@ class CommandProcessor {
             case COMMANDS.CD:
                 if (args.length < 1) throw new Error(ERRORS.CD_COMMAND_REQUIRES_ARGUMENT);
                 await this.#cd(args[0]);
+                break;
+            case COMMANDS.LS:
+                await this.#ls();
                 break;
             case COMMANDS.EXIT:
                 this.fileManager.exit();
@@ -48,8 +51,24 @@ class CommandProcessor {
             if (error.code === 'ENOENT') {
                 throw new Error(ERRORS.DIRECTORY_DOES_NOT_EXIST);
             }
+
             throw error;
         }
+    }
+
+    async #ls() {
+        printInfo('List of files and directories:');
+        const items = await fs.promises.readdir(this.fileManager.currentDir, { withFileTypes: true });
+
+        const sortedItems = items
+            .map(item => ({ Name: item.name, Type: item.isDirectory() ? 'directory' : 'file' }))
+            .toSorted((a, b) =>
+                a.Type === b.Type
+                    ? a.Name.localeCompare(b.Name)
+                    : a.Type === 'directory' ? -1 : 1
+            );
+
+        printTable(sortedItems, ['Name', 'Type']);
     }
 }
 
