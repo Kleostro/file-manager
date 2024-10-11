@@ -29,11 +29,17 @@ class FileManager {
             printError(`Operation failed: ${error.message}`);
         }
 
+        this.#printCurrentDir();
         this.#promptUser();
+    }
+
+    #printCurrentDir() {
+        printInfo(`You are currently in ${this.currentDir}`);
     }
 
     start() {
         printInfo(`Welcome to the File Manager, ${this.username}!`);
+        this.#printCurrentDir();
         this.#promptUser();
     }
 
