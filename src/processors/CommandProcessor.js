@@ -7,6 +7,7 @@ import CatCommand from '#commands/file/Cat';
 import AddCommand from '#commands/file/Add';
 import { printError } from '#utils/printMessage';
 import RnCommand from '#commands/file/Rn';
+import CpCommand from '#commands/file/Cp';
 
 class CommandProcessor {
     constructor(fileManager) {
@@ -18,6 +19,7 @@ class CommandProcessor {
             [COMMANDS.CAT]: new CatCommand(fileManager),
             [COMMANDS.ADD]: new AddCommand(fileManager),
             [COMMANDS.RN]: new RnCommand(fileManager),
+            [COMMANDS.CP]: new CpCommand(fileManager),
         };
     }
 

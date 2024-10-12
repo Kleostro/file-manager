@@ -8,6 +8,7 @@ const ERRORS = {
     CAT_COMMAND_REQUIRES_ARGUMENT: 'cat command requires one argument',
     ADD_COMMAND_REQUIRES_ARGUMENT: 'add command requires one argument',
     RN_COMMAND_REQUIRES_TWO_ARGUMENTS: 'rn command requires two arguments',
+    CP_COMMAND_REQUIRES_TWO_ARGUMENTS: 'cp command requires two arguments',
 }
 
 export default ERRORS;
