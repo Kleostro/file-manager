@@ -10,6 +10,7 @@ const ERRORS = {
     RN_COMMAND_REQUIRES_TWO_ARGUMENTS: 'rn command requires two arguments',
     CP_COMMAND_REQUIRES_TWO_ARGUMENTS: 'cp command requires two arguments',
     MV_COMMAND_REQUIRES_TWO_ARGUMENTS: 'mv command requires two arguments',
+    RM_COMMAND_REQUIRES_ONE_ARGUMENT: 'rm command requires one argument',
 }
 
 export default ERRORS;

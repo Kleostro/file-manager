@@ -10,6 +10,7 @@ import AddCommand from '#commands/file/Add';
 import RnCommand from '#commands/file/Rn';
 import CpCommand from '#commands/file/Cp';
 import MvCommand from '#commands/file/Mv';
+import RmCommand from '#commands/file/Rm';
 import { printError } from '#utils/printMessage';
 
 class CommandProcessor {
@@ -24,6 +25,7 @@ class CommandProcessor {
             [COMMANDS.RN]: new RnCommand(fileManager),
             [COMMANDS.CP]: new CpCommand(fileManager),
             [COMMANDS.MV]: new MvCommand(fileManager),
+            [COMMANDS.RM]: new RmCommand(fileManager),
         };
     }
 
