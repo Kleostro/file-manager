@@ -1,4 +1,4 @@
-const COMMANDS = {
+export const COMMANDS = {
     EXIT: '.exit',
     UP: 'up',
     CD: 'cd',
@@ -9,6 +9,13 @@ const COMMANDS = {
     CP: 'cp',
     MV: 'mv',
     RM: 'rm',
-}
+    OS: 'os',
+};
 
-export default COMMANDS;
+export const OS_ARGUMENTS = {
+    EOL: '--EOL',
+    CPUS: '--cpus',
+    HOMEDIR: '--homedir',
+    USERNAME: '--username',
+    ARCHITECTURE: '--architecture',
+};

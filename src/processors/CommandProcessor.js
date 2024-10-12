@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import COMMANDS from '#constants/commands';
+import { COMMANDS } from '#constants/commands';
 import ERRORS from '#constants/errors';
 import CdCommand from '#commands/fileSystem/Cd';
 import UpCommand from '#commands/fileSystem/Up';
@@ -11,6 +11,7 @@ import RnCommand from '#commands/file/Rn';
 import CpCommand from '#commands/file/Cp';
 import MvCommand from '#commands/file/Mv';
 import RmCommand from '#commands/file/Rm';
+import OsCommand from '#commands/system/Os';
 import { printError } from '#utils/printMessage';
 
 class CommandProcessor {
@@ -26,6 +27,7 @@ class CommandProcessor {
             [COMMANDS.CP]: new CpCommand(fileManager),
             [COMMANDS.MV]: new MvCommand(fileManager),
             [COMMANDS.RM]: new RmCommand(fileManager),
+            [COMMANDS.OS]: new OsCommand(fileManager),
         };
     }
 
