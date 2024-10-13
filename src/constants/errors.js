@@ -13,6 +13,7 @@ const ERRORS = {
     RM_COMMAND_REQUIRES_ONE_ARGUMENT: 'rm command requires one argument',
     OS_COMMAND_REQUIRES_ARGUMENT: 'os command requires one argument',
     INVALID_OS_ARGUMENT: 'Invalid os argument',
+    COMPRESS_COMMAND_REQUIRES_TWO_ARGUMENTS: 'compress command requires two arguments',
 }
 
 export default ERRORS;

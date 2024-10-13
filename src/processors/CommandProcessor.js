@@ -12,6 +12,7 @@ import CpCommand from '#commands/file/Cp';
 import MvCommand from '#commands/file/Mv';
 import RmCommand from '#commands/file/Rm';
 import OsCommand from '#commands/system/Os';
+import CompressCommand from '#commands/file/Compress';
 import { printError } from '#utils/printMessage';
 
 class CommandProcessor {
@@ -28,6 +29,7 @@ class CommandProcessor {
             [COMMANDS.MV]: new MvCommand(fileManager),
             [COMMANDS.RM]: new RmCommand(fileManager),
             [COMMANDS.OS]: new OsCommand(fileManager),
+            [COMMANDS.COMPRESS]: new CompressCommand(fileManager),
         };
     }
 

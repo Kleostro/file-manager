@@ -10,6 +10,7 @@ export const COMMANDS = {
     MV: 'mv',
     RM: 'rm',
     OS: 'os',
+    COMPRESS: 'compress',
 };
 
 export const OS_ARGUMENTS = {
