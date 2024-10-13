@@ -14,6 +14,7 @@ import RmCommand from '#commands/file/Rm';
 import OsCommand from '#commands/system/Os';
 import CompressCommand from '#commands/file/Compress';
 import DecompressCommand from '#commands/file/Decompress';
+import HashCommand from '#commands/file/Hash';
 import { printError } from '#utils/printMessage';
 
 class CommandProcessor {
@@ -32,6 +33,7 @@ class CommandProcessor {
             [COMMANDS.OS]: new OsCommand(fileManager),
             [COMMANDS.COMPRESS]: new CompressCommand(fileManager),
             [COMMANDS.DECOMPRESS]: new DecompressCommand(fileManager),
+            [COMMANDS.HASH]: new HashCommand(fileManager),
         };
     }
 

@@ -12,6 +12,7 @@ export const COMMANDS = {
     OS: 'os',
     COMPRESS: 'compress',
     DECOMPRESS: 'decompress',
+    HASH: 'hash',
 };
 
 export const OS_ARGUMENTS = {

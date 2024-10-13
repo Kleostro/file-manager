@@ -15,6 +15,7 @@ const ERRORS = {
     INVALID_OS_ARGUMENT: 'Invalid os argument',
     COMPRESS_COMMAND_REQUIRES_TWO_ARGUMENTS: 'compress command requires two arguments',
     DECOMPRESS_COMMAND_REQUIRES_TWO_ARGUMENTS: 'decompress command requires two arguments',
+    HASH_COMMAND_REQUIRES_ONE_ARGUMENT: 'hash command requires one argument',
 }
 
 export default ERRORS;
