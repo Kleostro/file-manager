@@ -15,18 +15,17 @@ class CompressCommand extends BaseCommand {
         let destinationFilePath = path.resolve(this.fileManager.currentDir, destinationPath);
 
         try {
-            const sourceStats = await fs.promises.stat(sourceFilePath);
-            if (!sourceStats.isFile()) {
-                throw new Error(`Source is not a file: ${sourcePath}`);
-            }
+            const [sourceStats, destStats] = await Promise.all([
+                fs.promises.stat(sourceFilePath),
+                fs.promises.stat(destinationFilePath)
+            ]);
 
-            const destStats = await fs.promises.stat(destinationFilePath);
-            if (destStats && destStats.isDirectory()) {
-                const sourceFileName = path.basename(sourceFilePath);
-                const sourceFileNameWithoutExt = path.parse(sourceFileName).name;
-                destinationFilePath = path.join(destinationFilePath, `${sourceFileNameWithoutExt}.br`);
+            if (!sourceStats.isFile()) throw new Error(`Source is not a file: ${sourcePath}`);
+
+            if (destStats?.isDirectory()) {
+                destinationFilePath = path.join(destinationFilePath, `${path.basename(sourceFilePath)}.br`);
             } else if (path.extname(destinationFilePath) !== '.br') {
-                destinationFilePath = destinationFilePath.replace(/\.[^/.]+$/, "") + '.br';
+                destinationFilePath += '.br';
             }
 
             await pipeline(

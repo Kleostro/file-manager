@@ -1,5 +1,5 @@
 import path from 'path';
-import fs from 'fs/promises';
+import fs from 'fs';
 import BaseCommand from '#commands/BaseCommand';
 import ERRORS from '#constants/errors';
 import { printSuccess } from '#utils/printMessage';
@@ -12,8 +12,8 @@ class CdCommand extends BaseCommand {
         const fullPath = path.resolve(this.fileManager.currentDir, newPath);
 
         try {
-            await fs.access(fullPath);
-            const stats = await fs.stat(fullPath);
+            await fs.promises.access(fullPath);
+            const stats = await fs.promises.stat(fullPath);
 
             if (!stats.isDirectory()) {
                 throw new Error(ERRORS.NOT_A_DIRECTORY);
