@@ -15,24 +15,16 @@ class CompressCommand extends BaseCommand {
         let destinationFilePath = path.resolve(this.fileManager.currentDir, destinationPath);
 
         try {
-            const [sourceStats, destStats] = await Promise.all([
-                fs.promises.stat(sourceFilePath),
-                fs.promises.stat(destinationFilePath)
-            ]);
+            const sourceStats = await fs.promises.stat(sourceFilePath);
 
             if (!sourceStats.isFile()) throw new Error(`Source is not a file: ${sourcePath}`);
-
-            if (destStats?.isDirectory()) {
-                destinationFilePath = path.join(destinationFilePath, `${path.basename(sourceFilePath)}.br`);
-            } else if (path.extname(destinationFilePath) !== '.br') {
-                destinationFilePath += '.br';
-            }
 
             await pipeline(
                 fs.createReadStream(sourceFilePath),
                 createBrotliCompress(),
                 fs.createWriteStream(destinationFilePath)
             );
+
             printSuccess(`File ${path.basename(sourceFilePath)} has been compressed to ${path.basename(destinationFilePath)}!`);
         } catch (error) {
             if (error.code === 'ENOENT') {

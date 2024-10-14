@@ -20,14 +20,6 @@ class DecompressCommand extends BaseCommand {
                 throw new Error(`Source is not a file: ${sourcePath}`);
             }
 
-            const destStats = await fs.promises.stat(destinationFilePath).catch(() => null);
-            if (destStats && destStats.isDirectory()) {
-                const sourceFileName = path.basename(sourceFilePath, '.br');
-                destinationFilePath = path.join(destinationFilePath, sourceFileName);
-            } else if (path.extname(destinationFilePath) === '.br') {
-                destinationFilePath = destinationFilePath.slice(0, -3);
-            }
-
             await pipeline(
                 fs.createReadStream(sourceFilePath),
                 createBrotliDecompress(),
